@@ -255,6 +255,11 @@
                                         </a>
                                         <ul class="menu-sub">
                                             <li class="menu-item">
+                                                <a href="{{ route('services') }}" class="menu-link">
+                                                    <div data-i18n="Todos os serviços">Todos os serviços</div>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item">
                                                 <a href="" class="menu-link">
                                                     <div data-i18n="Gerar Ordem">Gerar Ordem</div>
                                                 </a>
@@ -262,11 +267,6 @@
                                             <li class="menu-item">
                                                 <a href="" class="menu-link">
                                                     <div data-i18n="Gerar Cotação">Gerar Cotação</div>
-                                                </a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="" class="menu-link">
-                                                    <div data-i18n="Cadastro de serviços">Cadastro de serviços</div>
                                                 </a>
                                             </li>
                                         </ul>

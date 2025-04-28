@@ -9,6 +9,7 @@ return new class extends Migration {
     public function up(): void {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->text('description')->nullable();
             $table->decimal('value', 10, 2)->default(0);
