@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Access\LoginController;
 use App\Http\Controllers\People\ClientController;
+use App\Http\Controllers\Service\FeesController;
 use App\Http\Controllers\Service\ServiceController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/created-service', [ServiceController::class, 'store'])->name('created-service');
     Route::post('/updated-service', [ServiceController::class, 'edit'])->name('updated-service');
     Route::post('/deleted-service', [ServiceController::class, 'delete'])->name('deleted-service');
+
+    Route::post('/created-fee', [FeesController::class, 'store'])->name('created-fee');
+    Route::post('/updated-fee', [FeesController::class, 'edit'])->name('updated-fee');
+    Route::post('/deleted-fee', [FeesController::class, 'delete'])->name('deleted-fee');
 
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });

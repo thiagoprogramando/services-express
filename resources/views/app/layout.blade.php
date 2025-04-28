@@ -232,7 +232,7 @@
                                             <i class="menu-icon tf-icons ri-home-smile-line text-light"></i>
                                             <div data-i18n="Dashboard">App</div>
                                         </a>
-                                        <ul class="menu-sub">
+                                        {{-- <ul class="menu-sub">
                                             <li class="menu-item">
                                                 <a href="{{ route('app') }}" class="menu-link">
                                                     <i class="menu-icon tf-icons ri-calendar-event-fill"></i>
@@ -245,7 +245,7 @@
                                                     <div data-i18n="Atendimentos">Atendimentos</div>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul> --}}
                                     </li>
 
                                     <li class="menu-item">
@@ -283,11 +283,11 @@
                                                     <div data-i18n="Clientes">Clientes</div>
                                                 </a>
                                             </li>
-                                            <li class="menu-item">
+                                            {{-- <li class="menu-item">
                                                 <a href="" class="menu-link">
                                                     <div data-i18n="Usuários">Usuários</div>
                                                 </a>
-                                            </li>
+                                            </li> --}}
                                         </ul>
                                     </li>
                                 </ul>

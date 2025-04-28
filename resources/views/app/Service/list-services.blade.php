@@ -150,14 +150,14 @@
                                     <form action="{{ route('deleted-service') }}" method="POST" class="demo-inline-spacing delete">
                                         @csrf
                                         <input type="hidden" name="id" value="{{ $service->id }}">
-                                        <button type="submit" class="btn btn-icon btn-outline-danger waves-effect">
+                                        <button type="submit" class="btn btn-icon btn-outline-danger waves-effect" title="Deletar">
                                             <span class="tf-icons ri-delete-bin-line ri-22px"></span>
                                         </button>
-                                        <button type="button" class="btn btn-icon btn-outline-success waves-effect" data-bs-toggle="modal" data-bs-target="#updatedModal{{ $service->id }}">
+                                        <button type="button" class="btn btn-icon btn-outline-success waves-effect" data-bs-toggle="modal" data-bs-target="#updatedModal{{ $service->id }}" title="Editar">
                                             <span class="tf-icons ri-eye-line ri-22px"></span>
                                         </button>
-                                        <button type="button" class="btn btn-icon btn-outline-dark waves-effect">
-                                            <span class="tf-icons ri-bank-card-line ri-22px"></span>
+                                        <button type="button" class="btn btn-icon btn-outline-dark waves-effect" data-bs-toggle="modal" data-bs-target="#FeesModal{{ $service->id }}" title="Taxas">
+                                            <span class="tf-icons ri-money-dollar-box-line ri-22px"></span>
                                         </button>
                                     </form>
                                 </td>
@@ -198,13 +198,209 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-12 text-center">
-                                                        <a class="me-1" data-bs-toggle="collapse" href="#collapseNotes" role="button" aria-expanded="false" aria-controls="collapseNotes"> Anotações </a>
+                                                        <a class="me-1" data-bs-toggle="collapse" href="#collapseNotes" role="button" aria-expanded="true" aria-controls="collapseNotes"> Extras </a>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="collapse show" id="collapseNotes">
+                                                            <div class="form-floating form-floating-outline mb-2">
+                                                                <textarea class="form-control h-px-100" name="description" id="description" placeholder="Notas">{{ $service->description }}</textarea>
+                                                                <label for="description">Descrição</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-12 text-center">
+                                                        <a class="me-1" data-bs-toggle="collapse" href="#collapseFees" role="button" aria-expanded="false" aria-controls="collapseFees"> Taxas </a>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="collapse" id="collapseFees">
+                                                            <div class="tab-pane fade show active" id="navs-orders-id" role="tabpanel">
+                                                                <label class="kanban-add-board-btn mb-3" for="kanban-add-board-input" data-bs-toggle="modal" data-bs-target="#createdFeesModal{{ $service->id }}">
+                                                                    <i class="ri-add-line"></i>
+                                                                    <span class="align-middle">Nova Taxa</span>
+                                                                </label>
+
+                                                                <ul class="p-0 m-0">
+                                                                    @foreach ($service->fees as $fee)
+                                                                        <li class="d-flex align-items-center mb-4">
+                                                                            <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                                                                <div class="me-2">
+                                                                                    <h6 class="mb-1">{{ $fee->name }}</h6>
+                                                                                    <p class="mb-0">{{ \Illuminate\Support\Str::limit($fee->description, 100) }}</p>
+                                                                                </div>
+                                                                                <div class="d-flex align-items-center">
+                                                                                    <span class="h6 mb-0">R$ {{ number_format($fee->value, 2, ',', '.') }}</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                    @endforeach
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer btn-group">
+                                                <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal"> Fechar </button>
+                                                <button type="submit" class="btn btn-success">Enviar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="modal fade" id="FeesModal{{ $service->id }}" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="exampleModalLabel1">Dados da Taxa</h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <label class="kanban-add-board-btn mb-3" for="kanban-add-board-input" data-bs-toggle="modal" data-bs-target="#createdFeesModal{{ $service->id }}">
+                                                        <i class="ri-add-line"></i>
+                                                        <span class="align-middle">Nova Taxa</span>
+                                                    </label>
+
+                                                    <ul class="p-0 m-0">
+                                                        @foreach ($service->fees as $fee)
+                                                            <li class="d-flex align-items-center mb-4">
+                                                                <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                                                    <div class="me-2">
+                                                                        <h6 class="mb-1">{{ $fee->name }}</h6>
+                                                                        <p class="mb-0">{{ \Illuminate\Support\Str::limit($fee->description, 100) }}</p>
+                                                                    </div>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <span class="h6 mb-0">R$ {{ number_format($fee->value, 2, ',', '.') }}</span>
+                                                                    </div>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <form action="{{ route('deleted-fee') }}" method="POST">
+                                                                            @csrf
+                                                                            <input type="hidden" name="id" value="{{ $fee->id }}">
+                                                                            <div class="btn-group">
+                                                                                <button type="submit" class="btn btn-icon btn-outline-dark waves-effect" title="Deletar">
+                                                                                    <span class="tf-icons ri-delete-bin-line ri-22px"></span>
+                                                                                </button>
+                                                                                <button type="button" class="btn btn-icon btn-outline-dark waves-effect" data-bs-toggle="collapse" href="#collapseFees{{ $fee->id }}" role="button" aria-expanded="true" aria-controls="collapseFees{{ $fee->id }}" title="Editar">
+                                                                                    <span class="tf-icons ri-eye-line ri-22px"></span>
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+
+                                                            <div class="collapse" id="collapseFees{{ $fee->id }}">
+                                                                <div class="card p-3 border border-1 border-dark">
+                                                                    <form action="{{ route('updated-fee') }}" method="POST">
+                                                                        @csrf
+                                                                        <input type="hidden" name="id" value="{{ $fee->id }}">
+                                                                        <div class="row">
+                                                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-2">
+                                                                                <div class="form-floating form-floating-outline">
+                                                                                    <input type="text" name="name" id="name" class="form-control" placeholder="Título da Taxa:" value="{{ $fee->name }}"/>
+                                                                                    <label for="name">Título da Taxa:</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-6 col-sm-12 col-md-6 col-lg-6 mb-2">
+                                                                                <div class="form-floating form-floating-outline">
+                                                                                    <input type="text" name="value" id="value" class="form-control money" placeholder="Valor:" value="{{ $fee->value }}" oninput="maskValue(this)"/>
+                                                                                    <label for="value">Valor:</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-12 text-center">
+                                                                                <a class="me-1" data-bs-toggle="collapse" href="#collapseExtras{{ $fee->id }}" role="button" aria-expanded="false" aria-controls="collapseExtras{{ $fee->id }}"> Extras </a>
+                                                                            </div>
+                                                                            <div class="col-12">
+                                                                                <div class="collapse" id="collapseExtras{{ $fee->id }}">
+                                                                                    <div class="row">
+                                                                                        <div class="col mb-2">
+                                                                                            <div class="form-floating form-floating-outline">
+                                                                                                <input type="text" name="value_min" id="value_min" class="form-control money" placeholder="Valor Mín" value="{{ $fee->value_min }}" oninput="maskValue(this)"/>
+                                                                                                <label for="value_min">Valor Mín</label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col mb-2">
+                                                                                            <div class="form-floating form-floating-outline">
+                                                                                                <input type="text" name="value_max" id="value_max" class="form-control money" placeholder="Valor Máx" value="{{ $fee->value_max }}" oninput="maskValue(this)"/>
+                                                                                                <label for="value_max">Valor Máx</label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="form-floating form-floating-outline mb-2">
+                                                                                        <textarea class="form-control h-px-100" name="description" id="description" placeholder="Notas">{{ $fee->description }}</textarea>
+                                                                                        <label for="description">Descrição</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-12 btn-group mt-3">
+                                                                                <button type="button" class="btn btn-outline-dark" data-bs-toggle="collapse" href="#collapseFees{{ $fee->id }}" role="button" aria-expanded="true" aria-controls="collapseFees{{ $fee->id }}"> Fechar </button>
+                                                                                <button type="submit" class="btn btn-success">Enviar</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal fade" id="createdFeesModal{{ $service->id }}" tabindex="-1" aria-hidden="true">
+                                <form action="{{ route('created-fee') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="service_id" value="{{ $service->id }}">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="exampleModalLabel1">Dados da Taxa</h4>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-2">
+                                                        <div class="form-floating form-floating-outline">
+                                                            <input type="text" name="name" id="name" class="form-control" placeholder="Título da Taxa:"/>
+                                                            <label for="name">Título da Taxa:</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 col-sm-12 col-md-6 col-lg-6 mb-2">
+                                                        <div class="form-floating form-floating-outline">
+                                                            <input type="text" name="value" id="value" class="form-control money" placeholder="Valor:" oninput="maskValue(this)"/>
+                                                            <label for="value">Valor:</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12 text-center">
+                                                        <a class="me-1" data-bs-toggle="collapse" href="#collapseNotes" role="button" aria-expanded="false" aria-controls="collapseNotes"> Extras </a>
                                                     </div>
                                                     <div class="col-12">
                                                         <div class="collapse" id="collapseNotes">
-
+                                                            <div class="row">
+                                                                <div class="col mb-2">
+                                                                    <div class="form-floating form-floating-outline">
+                                                                        <input type="text" name="value_min" id="value_min" class="form-control money" placeholder="Valor Mín" oninput="maskValue(this)"/>
+                                                                        <label for="value_min">Valor Mín</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col mb-2">
+                                                                    <div class="form-floating form-floating-outline">
+                                                                        <input type="text" name="value_max" id="value_max" class="form-control money" placeholder="Valor Máx" oninput="maskValue(this)"/>
+                                                                        <label for="value_max">Valor Máx</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                             <div class="form-floating form-floating-outline mb-2">
-                                                                <textarea class="form-control h-px-100" name="description" id="description" placeholder="Notas">{{ $service->description }}</textarea>
+                                                                <textarea class="form-control h-px-100" name="description" id="description" placeholder="Notas"></textarea>
                                                                 <label for="description">Descrição</label>
                                                             </div>
                                                         </div>
