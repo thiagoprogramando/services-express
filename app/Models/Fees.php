@@ -21,13 +21,6 @@ class Fees extends Model {
         'value_max'
     ];
 
-    protected $casts = [
-        'service_id' => 'integer',
-        'value' => 'decimal:2',
-        'value_min' => 'decimal:2',
-        'value_max' => 'decimal:2'
-    ];
-
     protected $dates = [
         'created_at',
         'updated_at',

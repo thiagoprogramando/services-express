@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Access\LoginController;
 use App\Http\Controllers\People\ClientController;
+use App\Http\Controllers\Price\PriceController;
 use App\Http\Controllers\Service\FeesController;
 use App\Http\Controllers\Service\ServiceController;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,15 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/created-fee', [FeesController::class, 'store'])->name('created-fee');
     Route::post('/updated-fee', [FeesController::class, 'edit'])->name('updated-fee');
     Route::post('/deleted-fee', [FeesController::class, 'delete'])->name('deleted-fee');
+
+    Route::get('/list-prices', [PriceController::class, 'index'])->name('list-prices');
+    Route::get('/view-price/{uuid}', [PriceController::class, 'view'])->name('view-price');
+    Route::post('/created-price', [PriceController::class, 'store'])->name('created-price');
+    Route::post('/updated-price', [PriceController::class, 'edit'])->name('updated-price');
+    Route::post('/deleted-price', [PriceController::class, 'delete'])->name('deleted-price');
+        Route::post('/add-price-service', [PriceController::class, 'addPriceService'])->name('add-price-service');
+        Route::post('/updated-price-service', [PriceController::class, 'updatedPriceService'])->name('updated-price-service');
+        Route::post('/action-price-service', [PriceController::class, 'actionPriceServices'])->name('action-price-service');
 
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });

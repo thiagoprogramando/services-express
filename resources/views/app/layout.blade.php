@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html lang="pt-br" class="light-style layout-menu-fixed layout-compact" dir="ltr" data-theme="theme-default-dark" data-template="horizontal-menu-template-no-customizer" data-style="light">
+<html lang="pt-br" class="light-style layout-menu-fixed layout-compact" dir="ltr" data-theme="theme-default" data-template="horizontal-menu-template" data-style="light">
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
@@ -18,9 +18,6 @@
         <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/flag-icons.css') }}"/>
 
         <link rel="stylesheet" href="{{ asset('assets/vendor/libs/node-waves/node-waves.css') }}"/>
-
-        <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/core-dark.css') }}"/>
-        <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/theme-default-dark.css') }}"/>
         <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}" />
 
         <link rel="stylesheet" href="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}"/>
@@ -34,8 +31,12 @@
         <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/cards-analytics.css') }}"/>
         <link rel="stylesheet" href="{{ asset('assets/vendor/libs/dropzone/dropzone.css') }}"/>
 
+        <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/core.css') }}" class="template-customizer-core-css"/>
+        <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/theme-default.css') }}" class="template-customizer-theme-css"/>
+
         <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
         <script src="{{ asset('assets/js/config.js') }}"></script>
+        
     </head>
 
     <body>
@@ -157,6 +158,29 @@
                                     </ul>
                                 </li> --}}
 
+                                <li class="nav-item dropdown-style-switcher dropdown me-1 me-xl-0">
+                                    <a class="nav-link btn btn-text-secondary rounded-pill btn-icon dropdown-toggle hide-arrow waves-effect waves-light" href="javascript:void(0);" data-bs-toggle="dropdown">
+                                        <i class="ri-22px ri-sun-line"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-styles">
+                                        <li>
+                                            <a class="dropdown-item waves-effect active" href="javascript:void(0);" data-theme="light">
+                                                <span class="align-middle"><i class="ri-sun-line ri-22px me-3"></i>Light</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item waves-effect" href="javascript:void(0);" data-theme="dark">
+                                                <span class="align-middle"><i class="ri-moon-clear-line ri-22px me-3"></i>Dark</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item waves-effect" href="javascript:void(0);" data-theme="system">
+                                                <span class="align-middle"><i class="ri-computer-line ri-22px me-3"></i>System</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
                                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                                     <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                                         <div class="avatar avatar-online">
@@ -256,17 +280,17 @@
                                         <ul class="menu-sub">
                                             <li class="menu-item">
                                                 <a href="{{ route('services') }}" class="menu-link">
-                                                    <div data-i18n="Todos os serviços">Todos os serviços</div>
+                                                    <div data-i18n="Gerar Serviços">Gerar Serviços</div>
+                                                </a>
+                                            </li>
+                                            <li class="menu-item">
+                                                <a href="{{ route('list-prices') }}" class="menu-link">
+                                                    <div data-i18n="Gerar Cotação">Gerar Cotação</div>
                                                 </a>
                                             </li>
                                             <li class="menu-item">
                                                 <a href="" class="menu-link">
                                                     <div data-i18n="Gerar Ordem">Gerar Ordem</div>
-                                                </a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="" class="menu-link">
-                                                    <div data-i18n="Gerar Cotação">Gerar Cotação</div>
                                                 </a>
                                             </li>
                                         </ul>
@@ -296,6 +320,14 @@
 
                         <div class="container-xxl flex-grow-1 container-p-y">
                             <div class="row g-6">
+                                @if ($errors->any())
+                                    <div class="alert alert-outline-danger" role="alert">
+                                        @foreach ($errors->all() as $error)
+                                            {{ $error }}
+                                        @endforeach
+                                    </div>
+                                @endif
+
                                 @yield('content')
                             </div>
                         </div>
@@ -347,7 +379,7 @@
         <script src="{{ asset('assets/js/charts-apex.js') }}"></script>
         <script src="{{ asset('assets/js/forms-selects.js') }}"></script>
         
-        {{-- <script src="{{ asset('assets/js/forms-tagify.js') }}"></script> --}}
+        <script src="{{ asset('assets/js/forms-tagify.js') }}"></script>
         <script src="{{ asset('assets/js/forms-typeahead.js') }}"></script>
         <script src="{{ asset('assets/vendor/libs/dropzone/dropzone.js') }}"></script>
         <script src="{{ asset('assets/js/forms-file-upload.js') }}"></script>
