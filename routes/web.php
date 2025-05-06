@@ -18,6 +18,7 @@ Route::middleware(['auth'])->group(function () {
     })->name('app');
 
     Route::get('/profile', [UserController::class, 'index'])->name('profile');
+    Route::get('/security', [UserController::class, 'security'])->name('security');
     Route::post('/updated-user', [UserController::class, 'update'])->name('updated-user');
     Route::post('/deleted-user', [UserController::class, 'delete'])->name('deleted-user');
 

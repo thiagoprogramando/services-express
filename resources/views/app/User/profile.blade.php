@@ -7,7 +7,7 @@
                     <a class="nav-link active waves-effect waves-light" href="javascript:void(0);"><i class="ri-group-line me-2"></i>Minha Conta</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link waves-effect waves-light" href="pages-account-settings-security.html"><i class="ri-lock-line me-2"></i>Segurança</a>
+                    <a class="nav-link waves-effect waves-light" href="{{ route('security') }}"><i class="ri-lock-line me-2"></i>Segurança</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link waves-effect waves-light" href="pages-account-settings-billing.html"><i class="ri-bookmark-line me-2"></i>Pagamentos &amp; Planos</a>

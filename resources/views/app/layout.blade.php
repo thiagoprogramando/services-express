@@ -217,12 +217,6 @@
                                         </li>
                                         <li>
                                             <a class="dropdown-item" href="">
-                                                <i class="ri-money-dollar-circle-line ri-22px me-3"></i>
-                                                <span class="align-middle">Help</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="">
                                                 <i class="ri-question-line ri-22px me-3"></i><span class="align-middle">FAQ</span>
                                             </a>
                                         </li>
