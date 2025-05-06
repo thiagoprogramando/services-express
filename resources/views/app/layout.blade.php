@@ -128,7 +128,7 @@
                                                     <div class="d-flex">
                                                         <div class="flex-shrink-0 me-3">
                                                             <div class="avatar">
-                                                                <img src="{{ asset('assets/img/avatars/1.png') }}" alt class="rounded-circle"/>
+                                                                <img src="{{ Auth::user()->photo ? Storage::url(Auth::user()->photo) : asset('assets/img/avatars/1.png') }}" alt class="rounded-circle"/>
                                                             </div>
                                                         </div>
                                                         <div class="flex-grow-1">
@@ -184,16 +184,16 @@
                                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                                     <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                                         <div class="avatar avatar-online">
-                                            <img src="{{ asset('assets/img/avatars/1.png') }}" alt class="rounded-circle"/>
+                                            <img src="{{ Auth::user()->photo ? Storage::url(Auth::user()->photo) : asset('assets/img/avatars/1.png') }}" alt class="rounded-circle"/>
                                         </div>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end">
                                         <li>
-                                            <a class="dropdown-item" href="">
+                                            <a class="dropdown-item" href="{{ route('profile') }}">
                                                 <div class="d-flex">
                                                     <div class="flex-shrink-0 me-2">
                                                         <div class="avatar avatar-online">
-                                                            <img src="{{ asset('assets/img/avatars/1.png') }}" alt class="rounded-circle" />
+                                                            <img src="{{ Auth::user()->photo ? Storage::url(Auth::user()->photo) : asset('assets/img/avatars/1.png') }}" alt class="rounded-circle" />
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
@@ -207,7 +207,7 @@
                                             <div class="dropdown-divider"></div>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="">
+                                            <a class="dropdown-item" href="{{ route('profile') }}">
                                                 <i class="ri-user-3-line ri-22px me-3"></i>
                                                 <span class="align-middle">Perfil</span>
                                             </a>
@@ -427,6 +427,45 @@
                             cancelButtonColor: '#FF0000',
                         }).then((result) => {
                             if (result.isConfirmed) {
+                                form.submit();
+                            }
+                        });
+                    });
+                });
+
+                document.querySelectorAll('form.confirm').forEach(form => {
+                    form.addEventListener('submit', function (event) {
+                        event.preventDefault();
+
+                        Swal.fire({
+                            title: 'Confirme sua senha!',
+                            text: 'Para continuar, digite sua senha.',
+                            icon: 'info',
+                            input: 'password',
+                            inputPlaceholder: 'Digite sua senha',
+                            inputAttributes: {
+                                autocapitalize: 'off',
+                                autocorrect: 'off'
+                            },
+                            showCancelButton: true,
+                            confirmButtonText: 'Confirmar',
+                            confirmButtonColor: '#008000',
+                            cancelButtonText: 'Cancelar',
+                            cancelButtonColor: '#FF0000',
+                            preConfirm: (password) => {
+                                if (!password) {
+                                    Swal.showValidationMessage('Senha é obrigatória!');
+                                }
+                                return password;
+                            }
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                const input = document.createElement('input');
+                                input.type = 'hidden';
+                                input.name = 'password';
+                                input.value = result.value;
+                                form.appendChild(input);
+
                                 form.submit();
                             }
                         });

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Access\LoginController;
+use App\Http\Controllers\Config\UserController;
 use App\Http\Controllers\People\ClientController;
 use App\Http\Controllers\Price\PriceController;
 use App\Http\Controllers\Service\FeesController;
@@ -15,6 +16,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/app', function () {
         return view('app.app');
     })->name('app');
+
+    Route::get('/profile', [UserController::class, 'index'])->name('profile');
+    Route::post('/updated-user', [UserController::class, 'update'])->name('updated-user');
+    Route::post('/deleted-user', [UserController::class, 'delete'])->name('deleted-user');
 
     Route::get('/list-clients', [ClientController::class, 'index'])->name('list-clients');
     Route::post('/created-client', [ClientController::class, 'store'])->name('created-client');
