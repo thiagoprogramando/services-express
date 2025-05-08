@@ -1,7 +1,7 @@
 @extends('app.layout')
 @section('content')
     
-    <div class="col-12 col-sm-12 col-md-5 col-lg-5 mt-5 align-self-start row">
+    <div class="col-12 col-sm-12 col-md-4 col-lg-5 mt-5 align-self-start row">
         <div class="col-sm-12 col-lg-4 mb-2">
             <div class="card card-border-shadow-info h-100">
                 <div class="card-body">
@@ -56,7 +56,7 @@
                     <form action="{{ route('updated-price') }}" method="POST" class="row">
                         @csrf
                         <input type="hidden" name="uuid" value="{{ $price->uuid }}">
-                        <div class="col-8 col-sm-12 col-md-8 col-lg-8 mb-2">
+                        <div class="col-8 col-sm-12 col-md-12 col-lg-8 mb-2">
                             <div class="form-floating form-floating-outline">
                                 <div class="select2-primary">
                                     <select name="client_id" id="client_id" class="select2 form-select">
@@ -69,7 +69,7 @@
                                 <label for="client_id">Cliente</label>
                             </div>
                         </div>
-                        <div class="col-4 col-sm-12 col-md-4 col-lg-4 mb-2">
+                        <div class="col-4 col-sm-12 col-md-12 col-lg-4 mb-2">
                             <div class="form-floating form-floating-outline">
                                 <div class="select2-primary">
                                     <select name="status" id="status" class="select2 form-select">
@@ -87,7 +87,7 @@
                                 <label for="notes">Notas</label>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-12 offset-md-6 col-md-6 offset-lg-6 col-lg-6 d-grid mb-2">
+                        <div class="col-12 col-sm-12 col-md-12 offset-lg-6 col-lg-6 d-grid mb-2">
                             <div class="btn-group">
                                 <a href="{{ route('list-prices') }}" class="btn btn-outline-dark"> Cancelar </a>
                                 <button type="submit" class="btn btn-success">Salvar</button>
@@ -99,7 +99,7 @@
         </div>
     </div>
 
-    <div class="col-12 col-sm-12 col-md-7 col-lg-7 mt-5 row">
+    <div class="col-12 col-sm-12 col-md-8 col-lg-7 mt-5 row">
         <div class="card card-border-shadow-dark h-100">
             <div class="card-header">
                 <h5 class="mb-0">LISTA DE SERVIÇOS</h5>

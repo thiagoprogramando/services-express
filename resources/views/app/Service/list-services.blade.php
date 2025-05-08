@@ -86,25 +86,40 @@
                         <p class="mb-0">Serviços</p>
                     </div>
                 </div>
+                @php
+                    $doneTotal = 0;
+                    $quotedTotal = 0;
+
+                    foreach ($services as $service) {
+                        foreach ($service->priceServices as $priceService) {
+                            if ($priceService->price && $priceService->price->status == 1) {
+                                $doneTotal += $priceService->value;
+                            } elseif ($priceService->price && $priceService->price->status == 2) {
+                                $quotedTotal += $priceService->value;
+                            }
+                        }
+                    }
+                @endphp
                 <div class="d-flex align-items-center gap-3">
                     <div class="avatar">
                         <div class="avatar-initial bg-label-success rounded">
-                        <i class="ri-shake-hands-line ri-24px"></i>
+                            <i class="ri-shake-hands-line ri-24px"></i>
                         </div>
                     </div>
                     <div class="card-info">
-                        <h5 class="mb-0">R$ 28.5k</h5>
+                        <h5 class="mb-0">R$ {{ number_format($doneTotal, 2, ',', '.') }}</h5>
                         <p class="mb-0">Serviços Feitos</p>
                     </div>
                 </div>
+
                 <div class="d-flex align-items-center gap-3">
                     <div class="avatar">
                         <div class="avatar-initial bg-label-warning rounded">
-                        <i class="ri-arrow-left-right-line ri-24px"></i>
+                            <i class="ri-arrow-left-right-line ri-24px"></i>
                         </div>
                     </div>
                     <div class="card-info">
-                        <h5 class="mb-0">R$ 10.3K</h5>
+                        <h5 class="mb-0">R$ {{ number_format($quotedTotal, 2, ',', '.') }}</h5>
                         <p class="mb-0">Serviços Orçados</p>
                     </div>
                 </div>
@@ -144,7 +159,7 @@
                                     <span class="fw-medium">10</span>
                                 </td>
                                 <td class="text-center">
-                                    <span class="fw-medium">10</span>
+                                    <span class="fw-medium">{{ $service->priceServices->count() }}</span>
                                 </td>
                                 <td class="text-center">
                                     <form action="{{ route('deleted-service') }}" method="POST" class="demo-inline-spacing delete">

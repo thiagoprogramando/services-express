@@ -109,42 +109,39 @@
                 <div class="d-flex justify-content-between">
                     <h5 class="mb-1">Visão Geral</h5>
                 </div>
-                <div class="d-flex align-items-center card-subtitle">
-                    <div class="me-2">Total {{ $clients->count() }} Clientes</div>
-                </div>
             </div>
             <div class="card-body d-flex justify-content-between flex-wrap gap-4">
                 <div class="d-flex align-items-center gap-3">
                     <div class="avatar">
                         <div class="avatar-initial bg-label-info rounded">
-                        <i class="ri-pie-chart-2-line ri-24px"></i>
+                            <i class="ri-pie-chart-2-line ri-24px"></i>
                         </div>
                     </div>
                     <div class="card-info">
                         <h5 class="mb-0">{{ $clients->count() }}</h5>
-                        <p class="mb-0">Serviços</p>
+                        <p class="mb-0">Clientes</p>
                     </div>
                 </div>
                 <div class="d-flex align-items-center gap-3">
                     <div class="avatar">
                         <div class="avatar-initial bg-label-success rounded">
-                        <i class="ri-shake-hands-line ri-24px"></i>
+                            <i class="ri-user-2-line ri-24px"></i>
                         </div>
                     </div>
                     <div class="card-info">
-                        <h5 class="mb-0">R$ 28.5k</h5>
-                        <p class="mb-0">Serviços Feitos</p>
+                        <h5 class="mb-0">{{ $clients->filter(fn($c) => strlen(preg_replace('/\D/', '', $c->cpfcnpj)) === 11)->count() }}</h5>
+                        <p class="mb-0">PF</p>
                     </div>
                 </div>
                 <div class="d-flex align-items-center gap-3">
                     <div class="avatar">
-                        <div class="avatar-initial bg-label-warning rounded">
-                        <i class="ri-arrow-left-right-line ri-24px"></i>
+                        <div class="avatar-initial bg-label-primary rounded">
+                            <i class="ri-building-2-line ri-24px"></i>
                         </div>
                     </div>
                     <div class="card-info">
-                        <h5 class="mb-0">R$ 10.3K</h5>
-                        <p class="mb-0">Serviços Orçados</p>
+                        <h5 class="mb-0">{{ $clients->filter(fn($c) => strlen(preg_replace('/\D/', '', $c->cpfcnpj)) === 14)->count() }}</h5>
+                        <p class="mb-0">PJ</p>
                     </div>
                 </div>
             </div>
@@ -178,10 +175,12 @@
                                     <span class="badge bg-label-dark m-1">{{ $client->address() }}</span>
                                 </td>
                                 <td>
-                                    <span class="badge bg-label-info m-1">Serviço X 10/10/2010</span>
-                                    <span class="badge bg-label-info m-1">Serviço X 10/10/2010</span> <br>
-                                    <span class="badge bg-label-info m-1">Serviço X 10/10/2010</span>
-                                    <span class="badge bg-label-info m-1">Serviço X 10/10/2010</span>
+                                    @foreach ($client->services as $key => $service)
+                                        <span class="badge bg-label-info m-1">{{ $service->name }}</span> 
+                                        @if ($key == 1)
+                                            <br>
+                                        @endif
+                                    @endforeach
                                 </td>
                                 <td>
                                     <form action="{{ route('deleted-client') }}" method="POST" class="demo-inline-spacing delete">

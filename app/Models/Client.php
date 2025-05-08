@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Client extends Model {
@@ -67,5 +68,21 @@ class Client extends Model {
 
     public function address() {
         return $this->address . ', ' . $this->num . ' - ' . $this->postal_code . ', ' . $this->city . '/ ' . $this->province;
+    }
+
+    public function prices(): HasMany {
+        return $this->hasMany(Price::class);
+    }
+    
+    public function services() {
+        return $this->hasManyThrough(
+            Service::class,           
+            PriceService::class,      
+            'price_id',               
+            'id',                     
+            'id',                     
+            'service_id'              
+        )
+        ->distinct(); 
     }
 }

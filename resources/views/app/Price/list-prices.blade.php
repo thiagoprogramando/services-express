@@ -56,7 +56,7 @@
         </div>
     </div>
 
-    <div class="col-12 col-sm-12 col-md-7 col-lg-7">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-7">
         <div class="card mb-5">
             <div class="card-header">
                 <div class="d-flex justify-content-between">
@@ -86,7 +86,7 @@
                     </div>
                     <div class="card-info">
                         <h5 class="mb-0">R$ {{ number_format($approvedTotal, 2, ',', '.') }}</h5>
-                        <p class="mb-0">Cotações Aprovadas</p>
+                        <p class="mb-0">Aprovadas</p>
                     </div>
                 </div>
                 <div class="d-flex align-items-center gap-3">
@@ -97,7 +97,7 @@
                     </div>
                     <div class="card-info">
                         <h5 class="mb-0">R$ {{ number_format($pendingTotal, 2, ',', '.') }}</h5>
-                        <p class="mb-0">Cotações Pendentes</p>
+                        <p class="mb-0">Pendentes</p>
                     </div>
                 </div>                
             </div>

@@ -19,7 +19,7 @@
         </div>
     </div>
     
-    <div class="col-12 col-sm-12 col-md-7 col-lg-7 mb-2">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-7 mb-2">
         <div class="card mb-6">         
             <div class="card-body pt-0">
                 <form action="{{ route('updated-user') }}" method="POST" class="p-5">
