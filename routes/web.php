@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Access\ForgoutController;
 use App\Http\Controllers\Access\LoginController;
 use App\Http\Controllers\Config\UserController;
 use App\Http\Controllers\People\ClientController;
@@ -10,6 +11,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LoginController::class, 'login'])->name('login');
 Route::post('/logon', [LoginController::class, 'logon'])->name('logon');
+
+Route::get('/forgout/{code?}', [ForgoutController::class, 'forgout'])->name('forgout');
+Route::post('/forgout-password', [ForgoutController::class, 'forgoutPassword'])->name('forgout-password');
+Route::post('/recover-password/{code}', [ForgoutController::class, 'recoverPassword'])->name('recover-password');
 
 Route::middleware(['auth'])->group(function () {
 

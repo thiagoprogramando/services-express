@@ -43,7 +43,7 @@
                                         {{-- <input class="form-check-input" type="checkbox" id="remember-me" />
                                         <label class="form-check-label" for="remember-me"> Remember Me </label> --}}
                                     </div>
-                                    <a href="" class="float-end mb-1 mt-2 text-white">
+                                    <a href="{{ route('forgout') }}" class="float-end mb-1 mt-2 text-white">
                                         <span>Esqueceu a senha?</span>
                                     </a>
                                 </div>
