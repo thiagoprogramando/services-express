@@ -56,7 +56,7 @@
         </div>
     </div>
 
-    <div class="col-12 col-sm-12 col-md-12 col-lg-7">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6">
         <div class="card mb-5">
             <div class="card-header">
                 <div class="d-flex justify-content-between">
@@ -102,7 +102,9 @@
                 </div>                
             </div>
         </div>
+    </div>
 
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
         <div class="card">
             <h5 class="card-header">Cotações</h5>
 
@@ -141,7 +143,7 @@
                                 <td class="text-center">
                                     <form action="{{ route('deleted-price') }}" method="POST" class="demo-inline-spacing delete">
                                         @csrf
-                                        <input type="hidden" name="id" value="{{ $price->id }}">
+                                        <input type="hidden" name="uuid" value="{{ $price->uuid }}">
                                         <button type="submit" class="btn btn-icon btn-outline-danger waves-effect" title="Deletar">
                                             <span class="tf-icons ri-delete-bin-line ri-22px"></span>
                                         </button>

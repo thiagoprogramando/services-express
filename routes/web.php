@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Access\ForgoutController;
 use App\Http\Controllers\Access\LoginController;
+use App\Http\Controllers\AppController;
+use App\Http\Controllers\Config\TemplateController;
 use App\Http\Controllers\Config\UserController;
 use App\Http\Controllers\People\ClientController;
 use App\Http\Controllers\Price\PriceController;
@@ -18,9 +20,7 @@ Route::post('/recover-password/{code}', [ForgoutController::class, 'recoverPassw
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/app', function () {
-        return view('app.app');
-    })->name('app');
+    Route::get('/app', [AppController::class, 'index'])->name('app');
 
     Route::get('/profile', [UserController::class, 'index'])->name('profile');
     Route::get('/security', [UserController::class, 'security'])->name('security');
@@ -49,6 +49,13 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/add-price-service', [PriceController::class, 'addPriceService'])->name('add-price-service');
         Route::post('/updated-price-service', [PriceController::class, 'updatedPriceService'])->name('updated-price-service');
         Route::post('/action-price-service', [PriceController::class, 'actionPriceServices'])->name('action-price-service');
+
+    Route::get('/list-templates', [TemplateController::class, 'index'])->name('list-templates');
+    Route::get('/view-template/{uuid}', [TemplateController::class, 'view'])->name('view-template');
+    Route::get('/create-template', [TemplateController::class, 'createTemplate'])->name('create-templates');
+    Route::post('/created-template', [TemplateController::class, 'store'])->name('created-template');
+    Route::post('/updated-template', [TemplateController::class, 'edit'])->name('updated-template');
+    Route::post('/deleted-template', [TemplateController::class, 'delete'])->name('deleted-template');
 
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });

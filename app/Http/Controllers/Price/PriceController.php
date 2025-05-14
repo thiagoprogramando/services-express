@@ -130,6 +130,16 @@ class PriceController extends Controller {
         return redirect()->back()->with('infor', 'Não foi possível atualizar o Orçamento, verifique os dados e tente novamente!');
     }
 
+    public function delete(Request $request) {
+        
+        $price = Price::where('uuid', $request->uuid)->first();
+        if ($price && $price->delete()) {
+            return redirect()->back()->with('success', 'Cotação excluída com sucesso!');
+        }
+
+        return redirect()->back()->with('error', 'Erro ao excluir a Cotação, verifique os dados e tente novamente.');
+    }
+
     public function addPriceService(Request $request) {
         
         $validated = $request->validate([
@@ -257,7 +267,20 @@ class PriceController extends Controller {
 
     public function orderPriceService(Request $request) {
         
-        
+        // $validated = $request->validate([
+        //     'price_id' => 'required|exists:prices,id',
+        //     'order'    => 'required|array',
+        // ], [
+        //     'price_id.required' => 'Cotação indisponível ou não existe!',
+        //     'price_id.exists'   => 'Cotação indisponível ou não existe!',
+        //     'order.required'    => 'Ordem inválida.',
+        // ]);
+
+        // foreach ($validated['order'] as $index => $id) {
+        //     PriceService::where('id', $id)->update(['order' => $index]);
+        // }
+
+        // return redirect()->back()->with('success', 'Serviços ordenados com sucesso!');
     }
 
     private function formatValue($valor) {

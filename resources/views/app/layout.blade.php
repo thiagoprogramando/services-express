@@ -308,6 +308,25 @@
                                             </li> --}}
                                         </ul>
                                     </li>
+
+                                    <li class="menu-item">
+                                        <a href="javascript:void(0)" class="menu-link menu-toggle">
+                                            <i class="menu-icon tf-icons ri-command-line"></i>
+                                            <div data-i18n="Configurações">Configurações</div>
+                                        </a>
+                                        <ul class="menu-sub">
+                                            <li class="menu-item">
+                                                <a href="{{ route('list-templates') }}" class="menu-link">
+                                                    <div data-i18n="Templates">Templates</div>
+                                                </a>
+                                            </li>
+                                            {{-- <li class="menu-item">
+                                                <a href="" class="menu-link">
+                                                    <div data-i18n="Usuários">Usuários</div>
+                                                </a>
+                                            </li> --}}
+                                        </ul>
+                                    </li>
                                 </ul>
                             </div>
                         </aside>
@@ -373,10 +392,8 @@
         <script src="{{ asset('assets/js/charts-apex.js') }}"></script>
         <script src="{{ asset('assets/js/forms-selects.js') }}"></script>
         
-        <script src="{{ asset('assets/js/forms-tagify.js') }}"></script>
-        <script src="{{ asset('assets/js/forms-typeahead.js') }}"></script>
-        <script src="{{ asset('assets/vendor/libs/dropzone/dropzone.js') }}"></script>
-        <script src="{{ asset('assets/js/forms-file-upload.js') }}"></script>
+        {{-- <script src="{{ asset('assets/js/forms-tagify.js') }}"></script>
+        <script src="{{ asset('assets/js/forms-typeahead.js') }}"></script> --}}
         <script>
             @if(session('error'))
                 Swal.fire({

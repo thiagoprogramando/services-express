@@ -45,7 +45,6 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="collapse" id="collapseNotes">
-
                                         <div class="form-floating form-floating-outline mb-2">
                                             <textarea class="form-control h-px-100" name="description" id="description" placeholder="Notas"></textarea>
                                             <label for="description">Descrição</label>
