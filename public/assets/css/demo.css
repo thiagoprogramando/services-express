@@ -11,9 +11,8 @@
   height: 64px;
 }
 
-.app-brand-logo.demo svg {
-  width: 38px;
-  height: 20px;
+.app-brand-logo.demo img {
+  max-width: 200px;
 }
 
 .app-brand-text.demo {

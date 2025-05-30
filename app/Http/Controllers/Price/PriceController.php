@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Price;
 
 use App\Http\Controllers\Controller;
 use App\Models\Client;
+use App\Models\Order;
 use App\Models\Price;
 use App\Models\PriceService;
 use App\Models\PriceServiceFee;
 use App\Models\Service;
+use App\Models\Template;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -67,13 +69,17 @@ class PriceController extends Controller {
             return redirect()->back()->with('infor', 'Orçamento não encontrado!');
         }
 
-        $services = Service::where('user_id', Auth::user()->id)->orderBy('name', 'asc')->get();
-        $clients = Client::where('user_id', Auth::user()->id)->orderBy('name', 'asc')->get();
+        $services   = Service::where('user_id', Auth::user()->id)->orderBy('name', 'asc')->get();
+        $clients    = Client::where('user_id', Auth::user()->id)->orderBy('name', 'asc')->get();
+        $templates  = Template::where('user_id', Auth::user()->id)->orderBy('name', 'asc')->get();
+        $order      = Order::where('price_id', $price->id)->where('user_id', Auth::user()->id)->first();
         
         return view('app.Price.view-price', [
             'price'     => $price,
             'clients'   => $clients,
             'services'  => $services,
+            'templates' => $templates,
+            'order'     => $order
         ]);
     }
 
@@ -153,6 +159,11 @@ class PriceController extends Controller {
             'price_id.exists'   => 'Cotação indisponível ou não existe!',
         ]);
 
+        $order = Order::where('price_id', $request->price_id)->where('user_id', Auth::user()->id)->first();
+        if ($order) {
+            return redirect()->back()->with('infor', 'Uma Ordem já foi gerada para o orçamento atual, verifique os dados e tente novamente!');
+        }
+
         $services = Service::whereIn('id', $validated['services'])->get();
         foreach ($services as $service) {
             PriceService::create([
@@ -171,6 +182,11 @@ class PriceController extends Controller {
         if (!$service) {
             return redirect()->back()->with('infor', 'Serviço não encontrado!');
         }
+
+        $order = Order::where('price_id', $service->price_id)->where('user_id', Auth::user()->id)->first();
+        if ($order) {
+            return redirect()->back()->with('infor', 'Uma Ordem já foi gerada para o orçamento atual, verifique os dados e tente novamente!');
+        }
        
         $service->discount = $this->formatValue($request->input('discount'));
         if ($service->save()) {
@@ -181,6 +197,11 @@ class PriceController extends Controller {
     }
 
     public function actionPriceServices(Request $request) {
+
+        $order = Order::where('price_id', $request->price_id)->where('user_id', Auth::user()->id)->first();
+        if ($order) {
+            return redirect()->back()->with('infor', 'Uma Ordem já foi gerada para o orçamento atual, verifique os dados e tente novamente!');
+        }
         
         $action = $request->input('action');
         if ($action === 'save') {
@@ -189,11 +210,9 @@ class PriceController extends Controller {
             return $this->removeServicePrice($request);
         } elseif ($action === 'clean') {
             return $this->cleanPriceService($request);
-        } elseif ($action === 'order') {
-            return $this->orderPriceService($request);
         }
     
-        return back()->with('success', 'Ação realizada com sucesso.');
+        return back()->with('infor', 'Nenhuma função foi necessária!');
     }
 
     public function addFeeService(Request $request) {
@@ -263,24 +282,6 @@ class PriceController extends Controller {
         }
 
         return redirect()->back()->with('error', 'Não foi possível excluir todos os serviços, verifque os dados e tente novamente!');
-    }
-
-    public function orderPriceService(Request $request) {
-        
-        // $validated = $request->validate([
-        //     'price_id' => 'required|exists:prices,id',
-        //     'order'    => 'required|array',
-        // ], [
-        //     'price_id.required' => 'Cotação indisponível ou não existe!',
-        //     'price_id.exists'   => 'Cotação indisponível ou não existe!',
-        //     'order.required'    => 'Ordem inválida.',
-        // ]);
-
-        // foreach ($validated['order'] as $index => $id) {
-        //     PriceService::where('id', $id)->update(['order' => $index]);
-        // }
-
-        // return redirect()->back()->with('success', 'Serviços ordenados com sucesso!');
     }
 
     private function formatValue($valor) {

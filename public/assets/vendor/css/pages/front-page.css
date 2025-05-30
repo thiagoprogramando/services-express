@@ -80,7 +80,7 @@
 }
 
 .dark-style body {
-  background-color: #30334e;
+  background-color: #010000;
 }
 .dark-style .landing-light-mode {
   display: none;
@@ -206,7 +206,7 @@ nav.layout-navbar {
 }
 
 .dark-style .navbar.landing-navbar {
-  background-color: #30334e;
+  background-color: #010000;
   border: 1px solid rgba(48, 51, 78, 0.78);
 }
 .dark-style .navbar.landing-navbar.navbar-active {
@@ -223,7 +223,7 @@ nav.layout-navbar {
 }
 @media (max-width: 991.98px) {
   .dark-style .navbar.landing-navbar .landing-nav-menu {
-    background-color: #30334e;
+    background-color: #010000;
   }
 }
 .dark-style .navbar .menu-text {

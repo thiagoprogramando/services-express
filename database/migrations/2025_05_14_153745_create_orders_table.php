@@ -11,9 +11,12 @@ return new class extends Migration {
             $table->id();
             $table->string('uuid')->unique();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('client_id')->constrained('clients')->onDelete('cascade');
             $table->foreignId('price_id')->constrained('prices')->onDelete('cascade');
             $table->foreignId('template_id')->nullable()->constrained('templates')->onDelete('cascade');
+            $table->text('header')->nullable();
+            $table->text('footer')->nullable();
+            $table->decimal('value', 10, 2)->default(0);
+            $table->decimal('discount', 10, 2)->default(0);
             $table->integer('status')->default(0);
             $table->timestamps();
             $table->softDeletes();

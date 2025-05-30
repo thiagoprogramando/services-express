@@ -57,7 +57,7 @@
     </div>
 
     <div class="col-12 col-sm-12 col-md-12 col-lg-6">
-        <div class="card mb-5">
+        <div class="card h-100">
             <div class="card-header">
                 <div class="d-flex justify-content-between">
                     <h5 class="mb-1">Visão Geral</h5>

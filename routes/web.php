@@ -5,8 +5,10 @@ use App\Http\Controllers\Access\LoginController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\Config\TemplateController;
 use App\Http\Controllers\Config\UserController;
+use App\Http\Controllers\Order\OrderController;
 use App\Http\Controllers\People\ClientController;
 use App\Http\Controllers\Price\PriceController;
+use App\Http\Controllers\Reports\PdfController;
 use App\Http\Controllers\Service\FeesController;
 use App\Http\Controllers\Service\ServiceController;
 use Illuminate\Support\Facades\Route;
@@ -50,12 +52,19 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/updated-price-service', [PriceController::class, 'updatedPriceService'])->name('updated-price-service');
         Route::post('/action-price-service', [PriceController::class, 'actionPriceServices'])->name('action-price-service');
 
+    Route::get('/list-orders', [OrderController::class, 'index'])->name('list-orders');
+    Route::post('/created-order', [OrderController::class, 'store'])->name('created-order');
+    Route::post('/deleted-order', [OrderController::class, 'deleted'])->name('deleted-order');
+    Route::post('/action-order', [OrderController::class, 'action'])->name('action-order');
+
     Route::get('/list-templates', [TemplateController::class, 'index'])->name('list-templates');
     Route::get('/view-template/{uuid}', [TemplateController::class, 'view'])->name('view-template');
     Route::get('/create-template', [TemplateController::class, 'createTemplate'])->name('create-templates');
     Route::post('/created-template', [TemplateController::class, 'store'])->name('created-template');
     Route::post('/updated-template', [TemplateController::class, 'edit'])->name('updated-template');
     Route::post('/deleted-template', [TemplateController::class, 'delete'])->name('deleted-template');
+
+    Route::get('/report-order-pdf/{order}/{pdf?}', [PdfController::class, 'pdfOrder'])->name('report-order-pdf');
 
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });

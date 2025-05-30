@@ -7,7 +7,7 @@
                         <div class="app-brand justify-content-center mt-5 text-center">
                             <a href="" class="app-brand-link d-flex flex-column align-items-center gap-2">
                                 <span>
-                                    <img class="w-25" src="{{ asset('assets/img/favicon/favicon.ico') }}">
+                                    <img class="w-25" src="{{ asset('assets/img/logo.png') }}">
                                 </span>
                                 <span class="app-brand-text demo fw-semibold text-white mt-2">
                                     {{ env('APP_NAME') }}
@@ -48,7 +48,7 @@
                             @endif
             
                             <p class="text-center text-white">
-                                <i><a href="{{ route('login') }}" class="text-white">Acessar Minha Conta!</a></i> 
+                                <a href="{{ route('login') }}" class="text-white">Acessar Minha Conta!</a>
                             </p>
                         </div>
                     </div>

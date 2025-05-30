@@ -23,6 +23,19 @@ class User extends Authenticatable {
         'address',
     ];
 
+    public function maskedName() {
+        if (!$this->name) {
+            return '';
+        }
+    
+        $nameParts = explode(' ', $this->name);
+    
+        $first = $nameParts[0] ?? '';
+        $second = $nameParts[1] ?? '';
+    
+        return trim($first . ' ' . $second);
+    }    
+
     protected $hidden = [
         'password',
         'remember_token',

@@ -10,10 +10,10 @@
                     <a class="nav-link active waves-effect waves-light" href="javascript:void(0);"><i class="ri-lock-line me-2"></i>Segurança</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link waves-effect waves-light" href="pages-account-settings-billing.html"><i class="ri-bookmark-line me-2"></i>Pagamentos &amp; Planos</a>
+                    <a class="nav-link waves-effect waves-light" href="#"><i class="ri-bookmark-line me-2"></i>Pagamentos &amp; Planos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link waves-effect waves-light" href="pages-account-settings-connections.html"><i class="ri-link-m me-2"></i>Integrações</a>
+                    <a class="nav-link waves-effect waves-light" href="#"><i class="ri-link-m me-2"></i>Integrações</a>
                 </li>
             </ul>
         </div>

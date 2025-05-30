@@ -1245,12 +1245,12 @@ li.ui-timepicker-selected,
   color: #3b4056;
 }
 .layout-navbar-fixed .window-scrolled .bg-navbar-theme.layout-navbar, .layout-horizontal .bg-navbar-theme.layout-navbar {
-  background-color: rgba(255, 255, 255, 0.9) !important;
+  background-color: #010000 !important;
 }
 .layout-navbar-fixed .window-scrolled .bg-navbar-theme.layout-navbar .search-input-wrapper .search-input,
 .layout-navbar-fixed .window-scrolled .bg-navbar-theme.layout-navbar .search-input-wrapper .search-toggler, .layout-horizontal .bg-navbar-theme.layout-navbar .search-input-wrapper .search-input,
 .layout-horizontal .bg-navbar-theme.layout-navbar .search-input-wrapper .search-toggler {
-  background-color: #fff !important;
+  background-color: #010000 !important;
 }
 [dir=rtl] .bg-navbar-theme.layout-navbar .navbar-search-wrapper .search-toggler > i:before {
   transform: scaleX(-1) !important;

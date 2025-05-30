@@ -2,11 +2,11 @@
 * Pages Mixins
 */
 body {
-  background: #282a42;
+  background: #010000;
 }
 
 .bg-body {
-  background: #282a42 !important;
+  background: #010000 !important;
 }
 
 .text-primary {
@@ -253,17 +253,17 @@ button.list-group-item-primary.active {
 .table-primary {
   --bs-table-bg: #e0e2ff;
   --bs-table-striped-bg: #dcdefb;
-  --bs-table-striped-color: #30334e;
+  --bs-table-striped-color: #010000;
   --bs-table-active-bg: #d2d4f1;
-  --bs-table-active-color: #30334e;
+  --bs-table-active-color: #010000;
   --bs-table-hover-bg: #d5d8f4;
-  --bs-table-hover-color: #30334e;
-  color: #30334e;
+  --bs-table-hover-color: #010000;
+  color: #010000;
   border-color: #cbcdea;
 }
 .table-primary .btn-icon,
 .table-primary .btn {
-  color: #30334e;
+  color: #010000;
 }
 
 .btn-primary {
@@ -768,11 +768,11 @@ button.list-group-item-primary.active {
 }
 .form-floating-outline label::after,
 .form-floating-outline > span::after {
-  background: #30334e;
+  background: #010000;
 }
 .form-floating-outline label.bg-body::after,
 .form-floating-outline > span.bg-body::after {
-  background: #282a42 !important;
+  background: #010000 !important;
 }
 
 .svg-illustration svg {
@@ -862,7 +862,7 @@ a:hover {
 table.dataTable.dtr-column > tbody > tr > td.control:before,
 table.dataTable.dtr-column > tbody > tr > th.control:before {
   background-color: #666cff;
-  border: 2px solid #30334e;
+  border: 2px solid #010000;
   box-shadow: 0 0 3px rgba(234, 234, 255, 0.8);
 }
 
@@ -1275,7 +1275,7 @@ li.ui-timepicker-selected,
 .layout-navbar-fixed .window-scrolled .bg-navbar-theme.layout-navbar .search-input-wrapper .search-input,
 .layout-navbar-fixed .window-scrolled .bg-navbar-theme.layout-navbar .search-input-wrapper .search-toggler, .layout-horizontal .bg-navbar-theme.layout-navbar .search-input-wrapper .search-input,
 .layout-horizontal .bg-navbar-theme.layout-navbar .search-input-wrapper .search-toggler {
-  background-color: #30334e !important;
+  background-color: #010000 !important;
 }
 [dir=rtl] .bg-navbar-theme.layout-navbar .navbar-search-wrapper .search-toggler > i:before {
   transform: scaleX(-1) !important;
@@ -1347,11 +1347,11 @@ li.ui-timepicker-selected,
 }
 
 .layout-navbar-fixed .layout-page:not(.window-scrolled) .layout-navbar.navbar-detached {
-  background: #282a42;
+  background: #010000;
 }
 
 .bg-menu-theme {
-  background-color: #282a42 !important;
+  background-color: #010000 !important;
   color: #d7d8ed;
 }
 .bg-menu-theme .menu-link,
@@ -1396,7 +1396,7 @@ li.ui-timepicker-selected,
   color: #fff;
 }
 .bg-menu-theme .menu-inner-shadow {
-  background: linear-gradient(#282a42 5%, rgba(40, 42, 66, 0.75) 45%, rgba(40, 42, 66, 0.2) 80%, transparent);
+  background: linear-gradient(#010000 5%, rgba(40, 42, 66, 0.75) 45%, rgba(40, 42, 66, 0.2) 80%, transparent);
 }
 .bg-menu-theme .menu-text {
   color: #d7d8ed;
@@ -1423,10 +1423,10 @@ li.ui-timepicker-selected,
   }
 }
 .bg-menu-theme.menu-horizontal {
-  background-color: #30334e !important;
+  background-color: #010000 !important;
 }
 .bg-menu-theme.menu-horizontal .menu-inner .menu-item:not(.menu-item-closing) > .menu-sub {
-  background: #30334e;
+  background: #010000;
 }
 
 .bg-footer-theme {

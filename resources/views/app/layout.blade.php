@@ -9,7 +9,7 @@
         <title>{{ env('APP_NAME') }} | {{ env('APP_DESCRIPTION') }}</title>
         <meta name="description" content=""/>
 
-        <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon/favicon.ico') }}"/>
+        <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon.png') }}"/>
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&ampdisplay=swap" rel="stylesheet"/>
@@ -47,7 +47,7 @@
                         <div class="navbar-brand app-brand demo d-none d-xl-flex py-0 me-6">
                             <a href="{{ route('app') }}" class="app-brand-link gap-2">
                                 <span class="app-brand-logo demo">
-                                    <img class="w-25" src="{{ asset('assets/img/favicon/favicon.ico') }}">
+                                    <img src="{{ asset('assets/img/logo.png') }}">
                                 </span>
                             </a>
 
@@ -65,11 +65,11 @@
                         <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                             <ul class="navbar-nav flex-row align-items-center ms-auto">
                                 <!-- Search -->
-                                <li class="nav-item navbar-search-wrapper me-1 me-xl-0">
+                                {{-- <li class="nav-item navbar-search-wrapper me-1 me-xl-0">
                                     <a class="nav-link btn btn-text-secondary rounded-pill search-toggler fw-normal" href="javascript:void(0);">
                                         <i class="ri-search-line ri-22px scaleX-n1-rtl"></i>
                                     </a>
-                                </li>
+                                </li> --}}
                                 <!-- /Search -->
 
                                 <!-- Language -->
@@ -128,7 +128,7 @@
                                                     <div class="d-flex">
                                                         <div class="flex-shrink-0 me-3">
                                                             <div class="avatar">
-                                                                <img src="{{ Auth::user()->photo ? Storage::url(Auth::user()->photo) : asset('assets/img/avatars/1.png') }}" alt class="rounded-circle"/>
+                                                                <img src="{{ Auth::user()->photo ? Storage::url(Auth::user()->photo) : asset('assets/img/avatars/man.png') }}" alt class="rounded-circle"/>
                                                             </div>
                                                         </div>
                                                         <div class="flex-grow-1">
@@ -157,34 +157,10 @@
                                         </li>
                                     </ul>
                                 </li> --}}
-
-                                <li class="nav-item dropdown-style-switcher dropdown me-1 me-xl-0">
-                                    <a class="nav-link btn btn-text-secondary rounded-pill btn-icon dropdown-toggle hide-arrow waves-effect waves-light" href="javascript:void(0);" data-bs-toggle="dropdown">
-                                        <i class="ri-22px ri-sun-line"></i>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-end dropdown-styles">
-                                        <li>
-                                            <a class="dropdown-item waves-effect active" href="javascript:void(0);" data-theme="light">
-                                                <span class="align-middle"><i class="ri-sun-line ri-22px me-3"></i>Light</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item waves-effect" href="javascript:void(0);" data-theme="dark">
-                                                <span class="align-middle"><i class="ri-moon-clear-line ri-22px me-3"></i>Dark</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item waves-effect" href="javascript:void(0);" data-theme="system">
-                                                <span class="align-middle"><i class="ri-computer-line ri-22px me-3"></i>System</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-
                                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                                     <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                                         <div class="avatar avatar-online">
-                                            <img src="{{ Auth::user()->photo ? Storage::url(Auth::user()->photo) : asset('assets/img/avatars/1.png') }}" alt class="rounded-circle"/>
+                                            <img src="{{ Auth::user()->photo ? Storage::url(Auth::user()->photo) : asset('assets/img/avatars/man.png') }}" alt class="rounded-circle"/>
                                         </div>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end">
@@ -193,7 +169,7 @@
                                                 <div class="d-flex">
                                                     <div class="flex-shrink-0 me-2">
                                                         <div class="avatar avatar-online">
-                                                            <img src="{{ Auth::user()->photo ? Storage::url(Auth::user()->photo) : asset('assets/img/avatars/1.png') }}" alt class="rounded-circle" />
+                                                            <img src="{{ Auth::user()->photo ? Storage::url(Auth::user()->photo) : asset('assets/img/avatars/man.png') }}" alt class="rounded-circle" />
                                                         </div>
                                                     </div>
                                                     <div class="flex-grow-1">
@@ -246,24 +222,24 @@
                             <div class="container-xxl d-flex h-100">
                                 <ul class="menu-inner">
                                     <li class="menu-item">
-                                        <a href="javascript:void(0)" class="menu-link menu-toggle">
-                                            <i class="menu-icon tf-icons ri-home-smile-line text-light"></i>
-                                            <div data-i18n="Dashboard">App</div>
+                                        <a href="{{ route('app') }}" class="menu-link menu-toggle">
+                                            <i class="menu-icon tf-icons ri-home-smile-line"></i>
+                                            <div data-i18n="Dashboard">Dashboard</div>
                                         </a>
-                                        {{-- <ul class="menu-sub">
+                                        <ul class="menu-sub">
                                             <li class="menu-item">
+                                                <a href="{{ route('app') }}" class="menu-link">
+                                                    <i class="menu-icon tf-icons ri-home-smile-line"></i>
+                                                    <div data-i18n="Dashboard">Dashboard</div>
+                                                </a>
+                                            </li>
+                                            {{-- <li class="menu-item">
                                                 <a href="{{ route('app') }}" class="menu-link">
                                                     <i class="menu-icon tf-icons ri-calendar-event-fill"></i>
                                                     <div data-i18n="Agenda">Agenda</div>
                                                 </a>
-                                            </li>
-                                            <li class="menu-item">
-                                                <a href="" class="menu-link">
-                                                    <i class="menu-icon tf-icons ri-customer-service-2-line"></i>
-                                                    <div data-i18n="Atendimentos">Atendimentos</div>
-                                                </a>
-                                            </li>
-                                        </ul> --}}
+                                            </li> --}}
+                                        </ul>
                                     </li>
 
                                     <li class="menu-item">
@@ -274,17 +250,17 @@
                                         <ul class="menu-sub">
                                             <li class="menu-item">
                                                 <a href="{{ route('services') }}" class="menu-link">
-                                                    <div data-i18n="Gerar Serviços">Gerar Serviços</div>
+                                                    <div data-i18n="Serviços">Serviços</div>
                                                 </a>
                                             </li>
                                             <li class="menu-item">
                                                 <a href="{{ route('list-prices') }}" class="menu-link">
-                                                    <div data-i18n="Gerar Cotação">Gerar Cotação</div>
+                                                    <div data-i18n="Cotações">Cotações</div>
                                                 </a>
                                             </li>
                                             <li class="menu-item">
-                                                <a href="" class="menu-link">
-                                                    <div data-i18n="Gerar Ordem">Gerar Ordem</div>
+                                                <a href="{{ route('list-orders') }}" class="menu-link">
+                                                    <div data-i18n="Ordens">Ordens</div>
                                                 </a>
                                             </li>
                                         </ul>

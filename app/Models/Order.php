@@ -12,14 +12,31 @@ class Order extends Model {
     protected $table = 'orders';
 
     protected $fillable = [
+        'uuid',
         'user_id',
-        'client_id',
         'price_id',
         'template_id',
+        'header',
+        'footer',
+        'value',
+        'discount',
         'status',
     ];
 
-    protected $hidden = [
-        'uuid',
-    ];
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function price() {
+        return $this->belongsTo(Price::class, 'price_id');
+    }
+
+    public function template() {
+        return $this->belongsTo(Template::class, 'template_id');
+    }
+
+    public function labelStatus() {
+        return $this->status == 1 ? 'Aprovado' : 'Pendente';
+    }
+
 }
