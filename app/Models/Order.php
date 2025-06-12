@@ -28,12 +28,13 @@ class Order extends Model {
     }
 
     public function price() {
-        return $this->belongsTo(Price::class, 'price_id');
+        return $this->belongsTo(Price::class, 'price_id')->whereNull('deleted_at');
     }
 
     public function template() {
-        return $this->belongsTo(Template::class, 'template_id');
+        return $this->belongsTo(Template::class, 'template_id')->whereNull('deleted_at');
     }
+
 
     public function labelStatus() {
         return $this->status == 1 ? 'Aprovado' : 'Pendente';

@@ -269,12 +269,12 @@
                                     <li class="menu-item">
                                         <a href="javascript:void(0)" class="menu-link menu-toggle">
                                             <i class="menu-icon tf-icons ri-account-pin-box-line"></i>
-                                            <div data-i18n="Pessoas">Pessoas</div>
+                                            <div data-i18n="Cadastros">Cadastros</div>
                                         </a>
                                         <ul class="menu-sub">
                                             <li class="menu-item">
                                                 <a href="{{ route('list-clients') }}" class="menu-link">
-                                                    <div data-i18n="Clientes">Clientes</div>
+                                                    <div data-i18n="Clientes / Empresas">Clientes / Empresas</div>
                                                 </a>
                                             </li>
                                             {{-- <li class="menu-item">

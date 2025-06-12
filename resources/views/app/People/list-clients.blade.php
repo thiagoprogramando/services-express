@@ -4,7 +4,7 @@
     <div class="col-12">
         <label class="kanban-add-board-btn" for="kanban-add-board-input" data-bs-toggle="modal" data-bs-target="#createdModal">
             <i class="ri-add-line"></i>
-            <span class="align-middle">Adicionar Cliente</span>
+            <span class="align-middle">Adicionar</span>
         </label>
 
         <div class="modal fade" id="createdModal" tabindex="-1" aria-hidden="true">
@@ -13,7 +13,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" id="exampleModalLabel1">Dados do Cliente</h4>
+                            <h4 class="modal-title" id="exampleModalLabel1">Dados</h4>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -119,7 +119,7 @@
                     </div>
                     <div class="card-info">
                         <h5 class="mb-0">{{ $clients->count() }}</h5>
-                        <p class="mb-0">Clientes</p>
+                        <p class="mb-0">Registros</p>
                     </div>
                 </div>
                 <div class="d-flex align-items-center gap-3">
@@ -150,7 +150,7 @@
 
     <div class="col-12 col-sm-12 col-md-12 col-lg-12">
         <div class="card">
-            <h5 class="card-header">Clientes</h5>
+            <h5 class="card-header">Listagem</h5>
 
             <div class="table-responsive text-nowrap">
                 <table class="table">

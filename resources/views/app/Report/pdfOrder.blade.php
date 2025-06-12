@@ -47,10 +47,10 @@
             <table class="table table-bordered align-middle">
                 <thead>
                     <tr>
-                        <th>Serviço</th>
+                        <th>Prestador / Serviço</th>
                         <th>Valor</th>
                         <th>Desconto</th>
-                        <th class="text-center">Taxas</th>
+                        <th class="text-center">Taxas / Custos / Comissão</th>
                         <th>Total</th>
                     </tr>
                 </thead>
